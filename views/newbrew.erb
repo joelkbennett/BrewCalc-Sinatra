@@ -1,27 +1,43 @@
             <div class="row">
                 <section id="grain-input" class="col-md-3">
-                    <h4 class="text-center">New Brew</h4>
-                    <form id="brew-form" class="form-horizontal" role="form" method="post" action="/brews">
-                      <div class="form-group form-group-sm">
-                        <label for="title" class="control-label hidden">Name</label>
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" name="title" id="title" title="brew-title">
-                        </div>
+                  <h4 class="text-center">New Brew</h4>
+                  <hr>
+                  <form id="brew-form" class="form-horizontal" role="form" method="post" action="/brews">
+                    <div class="form-group form-group-sm">
+                      <label for="title" class="control-label col-md-4">Name</label>
+                      <div class="col-md-8">
+                        <input type="text" class="form-control" name="title" id="title" title="brew-title">
                       </div>
-                      <div class="form-group form-group-sm">
-                        <label for="grain" class="col-md-8 control-label">Grain Weight (lb)</label>
-                        <div class="col-md-4">
-                          <input type="number" class="form-control" name="grain" id="grain" title="grain-weight">
-                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="grain" class="col-md-4 control-label">Grain Weight (lb)</label>
+                      <div class="col-md-8">
+                        <input type="number" class="form-control" name="grain" id="grain" title="grain-weight">
                       </div>
-                      <div class="form-group form-group-sm">
-                        <label for="hop" class="col-md-8 control-label">Hop Weight (oz)</label>
-                        <div class="col-md-4">
-                          <input type="number" class="form-control" name="hops" id="hop" title="hop-weight">
-                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="hop" class="col-md-4 control-label">Hop Weight (oz)</label>
+                      <div class="col-md-8">
+                        <input type="number" class="form-control" name="hops" id="hop" title="hop-weight">
                       </div>
-                      <input type="submit" value="Save">
-                    </form>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="hop" class="col-md-4 control-label">Brew Date</label>
+                      <div class="col-md-8">
+                        <input type="date" class="form-control" name="date" id="date" title="date">
+                      </div>
+                    </div>
+                    <input class="btn btn-success" id="submit-brew" type="submit" value="Save">
+                    <a class="btn btn-danger" href="/brews">Cancel</a>
+                  </form>
+
+                  <div id="mash-details">
+                    <hr>
+                    <div><p><strong>Mash Vol:</strong> <span id="mash-vol"></span></p></div>
+                    <div><p><strong>Sparge Vol:</strong> <span id="sparge-vol"></span></p></div>
+                    <div><p><strong>Pre-boil Vol:</strong> <span id="pre-boil-vol"></span></p></div>
+                    <div><p><strong>After Cooling:</strong> <span id="cooled-vol"></span></p></div>
+                  </div>
                 </section>
 
                 <section id="kettle-input" class="col-md-3">
@@ -46,14 +62,14 @@
                     <!-- Mash Dimensions -->
                     <form class="form-horizontal" role="form">
                         <div class="form-group form-group-sm">
-                            <label for="mash-dimensions-width" class="col-md-8 control-label">Mash Width (cm)</label>
-                            <div class="col-md-4">
+                            <label for="mash-dimensions-width" class="col-sm-6 col-md-8 control-label">Mash Width (cm)</label>
+                            <div class="col-sm-6 col-md-4">
                                 <input type="number" class="form-control" id="mash-dimensions-width" title="mash-dimensions-width" readonly>
                             </div>
                         </div>
 
                         <div class="form-group form-group-sm">
-                            <label for="mash-dimensions-height" class="col-md-8 control-label">Mash Height (cm)</label>
+                            <label for="mash-dimensions-height" class="col-sm-6 col-md-8 control-label">Mash Height (cm)</label>
                             <div class="col-md-4">
                                 <input type="number" class="form-control" id="mash-dimensions-height" title="mash-dimensions-height" readonly>
                             </div>
@@ -134,62 +150,60 @@
             </div>
 
             <section id="visuals">
-                <div class="inline-block">
-                    <div class="htl-radius indicator-radius"></div>
-
-                    <div id="htl-visual" class="vessel">
-                        <div class="vessel-name">Hot Liquor</div>
-                        <div class="liquid water"></div>
-                        <div class="measure"></div>
-                        <div class="indicator level-indicator">
-                            <div class="indicator-label inline-block drop-shadow">0 cm</div>
-                            <div class="arrow-left inline-block"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="inline-block">
-                    <div class="mash-radius indicator-radius"></div>
-                    <div id="mash-visual" class="vessel">
-                        <div class="vessel-name">Mash Tun</div>
-                        <div id="mash-grain">
-                            <div class="indicator grain-indicator">
-                                <div class="indicator-label inline-block drop-shadow">0 lb</div>
-                                <div class="arrow-down"></div>
+              <div class="panel panel-default">
+                <div class="panel-body section-padding">
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="htl-radius indicator-radius"></div>
+                        <div id="htl-visual" class="vessel">
+                            <div class="vessel-name">Hot Liquor</div>
+                            <div class="liquid water"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
                             </div>
                         </div>
-                        <div class="liquid mash"></div>
-                        <div class="measure"></div>
-                        <div class="indicator level-indicator">
-                            <div class="indicator-label inline-block drop-shadow">0 cm</div>
-                            <div class="arrow-left inline-block"></div>
-                        </div>
                     </div>
-                </div>
 
-                <div class="inline-block">
-                    <div class="kettle-radius indicator-radius"></div>
-                    <div id="kettle-visual" class="vessel">
-                        <div class="vessel-name">Boil Kettle</div>
-                        <div id="kettle-hops">
-                            <div class="indicator hop-indicator">
-                                <div class="indicator-label inline-block drop-shadow">0 oz</div>
-                                <div class="arrow-down"></div>
+                    <div class="col-md-4">
+                        <div class="mash-radius indicator-radius"></div>
+                        <div id="mash-visual" class="vessel">
+                            <div class="vessel-name">Mash Tun</div>
+                            <div id="mash-grain">
+                                <div class="indicator grain-indicator">
+                                    <div class="indicator-label inline-block drop-shadow">0 lb</div>
+                                    <div class="arrow-down"></div>
+                                </div>
+                            </div>
+                            <div class="liquid mash"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
                             </div>
                         </div>
-                        <div class="liquid wort"></div>
-                        <div class="measure"></div>
-                        <div class="indicator level-indicator">
-                            <div class="indicator-label inline-block drop-shadow">0 cm</div>
-                            <div class="arrow-left inline-block"></div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="kettle-radius indicator-radius"></div>
+                        <div id="kettle-visual" class="vessel">
+                            <div class="vessel-name">Boil Kettle</div>
+                            <div id="kettle-hops">
+                                <div class="indicator hop-indicator">
+                                    <div class="indicator-label inline-block drop-shadow">0 oz</div>
+                                    <div class="arrow-down"></div>
+                                </div>
+                            </div>
+                            <div class="liquid wort"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
+                            </div>
                         </div>
                     </div>
+                  </div>
                 </div>
-            </section>
-
-            <section id="mash-details">
-                <div><p><strong>Mash Vol:</strong> <span id="mash-vol"></span></p></div>
-                <div><p><strong>Sparge Vol:</strong> <span id="sparge-vol"></span></p></div>
-                <div><p><strong>Pre-boil Vol:</strong> <span id="pre-boil-vol"></span></p></div>
-                <div><p><strong>After Cooling:</strong> <span id="cooled-vol"></span></p></div>
+              </div>
             </section>

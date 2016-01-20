@@ -17,7 +17,7 @@ module BrewCalc
     end
 
     get '/brews' do
-      @brews = Brew.all
+      @brews = Brew.all.order(date: :desc)
       erb :brewlist, :layout => :wrap
     end
 
@@ -26,7 +26,7 @@ module BrewCalc
     end
 
     post '/brews' do
-      new_brew = Brew.create(name: params[:title], grain: params[:grain], hops: params[:hops])
+      new_brew = Brew.create(name: params[:title], grain: params[:grain], hops: params[:hops], date: params[:date])
       redirect '/brews'
     end
 
@@ -37,8 +37,8 @@ module BrewCalc
 
     post '/brews/:id' do |bid|
       @brew = Brew.find_by(id: bid)
-      @brew.update(name: params[:title], grain: params[:grain], hops: params[:hops])  
-      redirect '/brews/#{bid}'
+      @brew.update(name: params[:title], grain: params[:grain], hops: params[:hops], date: params[:date])  
+      redirect '/brews'
     end
 
     delete '/brews/:id' do |bid|
