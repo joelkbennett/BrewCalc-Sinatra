@@ -17,7 +17,7 @@
                 <li><a>BrewCalc</a></li>
               </ul>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 no-padding">
               <ul class="nav navbar-nav">
                 <li><a href="/brews">View Brews<span class="sr-only">(current)</span></a></li>
                 <li><a href="/brews/data">Brew Data<span class="sr-only">(current)</span></a></li>
@@ -39,7 +39,8 @@
       <section id="recipe-inputs" class="col-md-9 no-padding">
         <header class="navbar">
           <ul class="nav navbar-nav">
-            <li><a>Item</a></li>
+            <li><a><%= login? ? username : "not logged in" %></a></li>
+            <%= '<li><a href="/logout">Logout</a></li>' if login? %>
           </ul>
         </header>
         <div class="section-padding">

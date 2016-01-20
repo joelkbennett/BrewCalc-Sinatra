@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118183901) do
+ActiveRecord::Schema.define(version: 20160120220029) do
 
   create_table "brews", force: :cascade do |t|
     t.string  "name"
     t.decimal "grain", precision: 4, scale: 2
     t.decimal "hops",  precision: 4, scale: 2
     t.date    "date"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.string "salt"
   end
 
 end

@@ -4,12 +4,21 @@
       <div class="panel-body section-padding">
         <h2>Brews</h2>
         <table class="table table-striped">
-          <tr>
-            <th>Name</th>
-            <th>Grain Weight</th>
-            <th>Hop Weight</th>
-            <th>Brew Date</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>
+                All Brews
+              </th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Grain Weight</th>
+              <th>Hop Weight</th>
+              <th>Brew Date</th>
+            </tr>
+          </thead>
           <% for @brew in @brews %>
           <tr>
             <td><a href="/brews/<%= @brew.id %>"><%= @brew.name %></a></td>

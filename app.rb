@@ -1,8 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'bcrypt'
 
 class Brew < ActiveRecord::Base
-    validates_presence_of :name, :grain, :hops
+  validates_presence_of :name, :grain, :hops
+end
+
+class User < ActiveRecord::Base
+  validates_presence_of :username, :email, :password, :salt
 end
 
 module BrewCalc
@@ -11,11 +16,17 @@ module BrewCalc
     set :database, { adapter: 'sqlite3', database: 'brews.sqlite3' }
     set :sessions, true
 
-    # Routes
-    get '/' do
-      erb :dashboard, :layout => :wrap
+    helpers do
+      def login?
+        session[:username].nil? ? false : true
+      end
+
+      def username
+        session[:username]
+      end
     end
 
+    # Brew Routes
     get '/brews' do
       @brews = Brew.all.order(date: :desc)
       erb :brewlist, :layout => :wrap
@@ -45,6 +56,34 @@ module BrewCalc
       @brew = Brews.find_by(id: bid)
       @brew.destroy
       redirect '/brews'
+    end
+
+    # User Routes
+    get '/' do
+      erb :dashboard, :layout => :wrap
+    end
+
+    post '/' do
+      # Login
+      @user = User.find_by(username: params[:username])
+      if @user.password == BCrypt::Engine.hash_secret(params[:password], @user.salt)
+        session[:username] = params[:username]
+        redirect '/'
+      end
+      erd 'error'
+    end
+
+    post '/signup' do
+      pw_salt = BCrypt::Engine.generate_salt
+      pw_hash = BCrypt::Engine.hash_secret(params[:password], pw_salt)
+      @user = User.create(username: params[:username], email: params[:email], password: pw_hash, salt: pw_salt)
+      session[:username] = params[:username]
+      redirect '/'
+    end
+
+    get '/logout' do
+      session[:username] = nil
+      redirect '/'
     end
   end
 end
