@@ -1,0 +1,26 @@
+<div class="row">
+  <section class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body section-padding">
+        <h2>Brews</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>Name</th>
+            <th>Grain Weight</th>
+            <th>Hop Weight</th>
+            <th>Brew Date</th>
+          </tr>
+          <% for @brew in @brews %>
+          <tr>
+            <td><a href="/brews/<%= @brew.id %>"><%= @brew.name %></a></td>
+            <td><%= @brew.grain %></td>
+            <td><%= @brew.hops %></td>
+            <td><%= @brew.date %></td>
+          </tr>
+          <% end %>  
+        </table>
+        <a href="/brews/new" class="btn btn-success">Add a Brew</a>
+      </div>
+    </div>
+  </section>
+</div>

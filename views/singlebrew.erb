@@ -1,0 +1,209 @@
+            <div class="row">
+                <section id="grain-input" class="col-md-3">
+                  <h4 class="text-center"><%= @brew.name %></h4>
+                  <hr>
+                  <form id="brew-form" class="form-horizontal hidden" role="form" method="post" action="/brews/<%= @brew.id %>">
+                    <div class="form-group form-group-sm">
+                      <label for="title" class="control-label col-md-4">Name</label>
+                      <div class="col-md-8">
+                        <input type="text" class="form-control" name="title" id="title" title="brew-title" value="<%= @brew.name %>">
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="grain" class="col-md-4 control-label">Grain Weight (lb)</label>
+                      <div class="col-md-8">
+                        <input type="number" class="form-control" name="grain" id="grain" title="grain-weight" value="<%= @brew.grain %>">
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="hop" class="col-md-4 control-label">Hop Weight (oz)</label>
+                      <div class="col-md-8">
+                        <input type="number" class="form-control" name="hops" id="hop" title="hop-weight" value="<%= @brew.hops %>">
+                      </div>
+                    </div>
+                    <input class="btn btn-success" id="submit-brew" type="submit" value="Save Changes">
+                    <a class="btn btn-danger" id="cancel-edit">Cancel</a>
+                  </form>
+
+                  <div id="mash-details">
+                    <div class="brew-details">
+                      <div><p><strong>Grain Weight:</strong> <%= @brew.grain %> lb</p></div>
+                      <div><p><strong>Hop Weight:</strong> <%= @brew.hops %> oz</p></div>
+                      <div><p><strong>Brew Date:</strong> <%= @brew.date %></p></div>
+                      <a id="edit-brew-details" class="btn btn-success">Edit Details</a>
+                    </div>
+                    <hr>
+                    <div><p><strong>Mash Vol:</strong> <span id="mash-vol"></span></p></div>
+                    <div><p><strong>Sparge Vol:</strong> <span id="sparge-vol"></span></p></div>
+                    <div><p><strong>Pre-boil Vol:</strong> <span id="pre-boil-vol"></span></p></div>
+                    <div><p><strong>After Cooling:</strong> <span id="cooled-vol"></span></p></div>
+                  </div>
+                </section>
+
+                <section id="kettle-input" class="col-md-3">
+                    <h4 class="text-center">Kettle Volumes</h4>
+                    <!-- HTL Dimensions -->
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label for="htl-dimensions-width" class="col-md-8 control-label">HTL Width (cm)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="htl-dimensions-width" title="htl-dimensions-width" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="htl-dimensions-height" class="col-md-8 control-label">HTL Height (cm)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="htl-dimensions-height" title="htl-dimensions-height" readonly>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Mash Dimensions -->
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label for="mash-dimensions-width" class="col-sm-6 col-md-8 control-label">Mash Width (cm)</label>
+                            <div class="col-sm-6 col-md-4">
+                                <input type="number" class="form-control" id="mash-dimensions-width" title="mash-dimensions-width" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="mash-dimensions-height" class="col-sm-6 col-md-8 control-label">Mash Height (cm)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="mash-dimensions-height" title="mash-dimensions-height" readonly>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Boil Dimensions -->
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label for="boil-dimensions-width" class="col-md-8 control-label">Boil Width (cm)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="boil-dimensions-width" title="boil-dimensions-width" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="boil-dimensions-height" class="col-md-8 control-label">Boil Height (cm)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="boil-dimensions-height" title="boil-dimensions-height" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="batch-input" class="col-md-3">
+                    <h4 class="text-center">System Settings</h4>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label for="batch-size" class="col-md-8 control-label">Batch Size (l)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="batch-size" title="batch-size" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="water-ratio" class="col-md-8 control-label">Water Ratio</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="water-ratio" title="water-ratio" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="grain-absorption" class="col-md-8 control-label">Grain Absorption</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="grain-absorption" title="grain-absorption" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="hop-absorption" class="col-md-8 control-label">Hop Absorption</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="hop-absorption" title="hop-absorption" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="evaporation" class="col-md-8 control-label">Evaporation Volume</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="evaporation" title="evaporation" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="dead-space" class="col-md-8 control-label">Mash Dead-space</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="dead-space" title="dead-space" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label for="shrinkage" class="col-md-8 control-label">Shrinkage</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="shrinkage" title="shrinkage" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <section id="visuals">
+              <div class="panel panel-default">
+                <div class="panel-body section-padding">
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="htl-radius indicator-radius"></div>
+                        <div id="htl-visual" class="vessel">
+                            <div class="vessel-name">Hot Liquor</div>
+                            <div class="liquid water"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mash-radius indicator-radius"></div>
+                        <div id="mash-visual" class="vessel">
+                            <div class="vessel-name">Mash Tun</div>
+                            <div id="mash-grain">
+                                <div class="indicator grain-indicator">
+                                    <div class="indicator-label inline-block drop-shadow">0 lb</div>
+                                    <div class="arrow-down"></div>
+                                </div>
+                            </div>
+                            <div class="liquid mash"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="kettle-radius indicator-radius"></div>
+                        <div id="kettle-visual" class="vessel">
+                            <div class="vessel-name">Boil Kettle</div>
+                            <div id="kettle-hops">
+                                <div class="indicator hop-indicator">
+                                    <div class="indicator-label inline-block drop-shadow">0 oz</div>
+                                    <div class="arrow-down"></div>
+                                </div>
+                            </div>
+                            <div class="liquid wort"></div>
+                            <div class="measure"></div>
+                            <div class="indicator level-indicator">
+                                <div class="indicator-label inline-block drop-shadow">0 cm</div>
+                                <div class="arrow-left inline-block"></div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>

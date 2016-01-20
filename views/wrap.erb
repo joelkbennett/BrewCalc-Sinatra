@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrewCalc</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <div class="container-fluid">
+        <div class="row">
+          <header class="navbar navbar-default">
+            <div class="col-md-3 site-brand">
+              <ul class="nav navbar-nav">
+                <li><a>BrewCalc</a></li>
+              </ul>
+            </div>
+            <div class="col-md-9">
+              <ul class="nav navbar-nav">
+                <li><a href="/brews">View Brews<span class="sr-only">(current)</span></a></li>
+                <li><a href="/brews/data">Brew Data<span class="sr-only">(current)</span></a></li>
+                <li><a href="/brews/new">New Brew<span class="sr-only">(current)</span></a></li>
+              </ul>
+            </div>
+          </header>
+        </div>
+
+    <div class="row">
+      <aside id="sidebar" class=" sidebar col-md-3 section-padding text-center">
+        <a href="/brews"><img src="/img/brewcalc-logo.png" alt="BrewCalc Logo" class="site-logo" /></a>
+        <section id="about" class="section-padding text-left">
+          <p>This second iteration of <strong>BrewCalc</strong> has been converted to a very basic Sinatra application. The intent remains the same: speed up my volume calculations when brewing.</p>
+          <p>I use a three kettle system, with a hot liquor, mash and boil kettle. By inputting the weight of grain and hops used a recipe, this calculator will show the amount of water (in centimetres) required.</p>
+        </section>
+      </aside>
+
+      <section id="recipe-inputs" class="col-md-9 no-padding">
+        <header class="navbar">
+          <ul class="nav navbar-nav">
+            <li><a>Item</a></li>
+          </ul>
+        </header>
+        <div class="section-padding">
+          <%= yield %>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/app/systemPresets.js"></script>
+  <script src="/js/app/volCalc.js"></script>
+  <script src="/js/app/visuals.js"></script>
+  <script src="/js/app/app.js"></script>
+  <script src="/js/app/formControls.js"></script>
+</body>
+</html>

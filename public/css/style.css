@@ -1,0 +1,245 @@
+/* Header */
+.navbar-default {
+    background-color: #484848;
+    border-color: #000000;
+}
+
+/* Sidebar */
+
+.sidebar {
+    background-color: #efefef;
+    border-right: thin solid #ddd;
+}
+
+/* Navbar */
+
+.navbar {
+    border-radius: 0;
+    border-bottom: thin solid #ddd;
+    margin-bottom: 0;
+}
+
+.navbar-default {
+    color: #eee;
+}
+
+/* Logo */
+
+.site-brand {
+    background-color: #222;
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #ddd;
+}
+
+/* Sections */
+
+body {
+    background-color: #f9f9f9;
+}
+
+#visuals {
+    margin-top: 1em;
+    padding-top: 2em;
+}
+
+.panel {
+    box-shadow: 2px 2px 10px rgba(0,0,0,.2)
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.section-padding {
+    padding: 2em;
+}
+
+.drop-shadow {
+    box-shadow: -2px 2px 5px rgba(0,0,0,.3);
+}
+
+.vessel {
+    border: 2px solid #555;
+    border-top: none;
+    background-image: linear-gradient(#eee, #ddd);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 0px 20px 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.vessel-name {
+    padding: 0 10px;
+    background-color: #ddd;
+    color: #333;
+    display: inline-block;
+    margin-left: 0;
+    top: 5px;
+    position: absolute;
+    left: 5px;
+    z-index: 99;
+}
+
+.liquid {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.water {
+    background-image: radial-gradient(circle, #FFFFFF, #E0F0FF);
+}
+
+.mash, .wort {
+    background-image: radial-gradient(circle, #7b1919, brown);
+}
+
+.measure {
+    height: 100%;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    background-color: #333;
+    opacity: .5;
+    background-image: repeating-linear-gradient(0deg, #333, #333 10px, #999 10px, #999 20px);
+}
+
+.indicator {
+    position: absolute;
+    width: 85px;
+    height: 30px;
+}
+
+.level-indicator {
+    right: 20px;
+    bottom: -15px;
+}
+
+.indicator-label {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    background-color: green;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    color: white;
+}
+
+.level-value {
+    color: white;
+}
+
+.arrow-left {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left:15px solid green;
+}
+
+.arrow-down {
+    position: absolute;
+    top: 25px; right: 25px;
+    width: 0;
+    height: 0;
+    border-right: 15px solid transparent;
+    border-top: 15px solid red;
+    border-left:15px solid transparent;
+}
+
+#mash-grain, #kettle-hops {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    z-index: 99;
+    opacity: .5;
+    width: 92%;
+    opacity: 0;
+}
+
+.grain, .hop {
+    display: inline-block;
+    margin: 1px;
+    border-radius: 50%;
+}
+
+.grain {
+    background-color: yellow;
+    width: 12px;
+    height: 12px;
+}
+
+.hop {
+    background-color: lightgreen;
+    width: 12px;
+    height: 12px;
+}
+
+.grain-indicator, .hop-indicator {
+    top: -32px;
+    left: 20px;
+}
+
+.grain-indicator .indicator-label, .hop-indicator .indicator-label {
+    background-color: red;
+}
+
+.indicator-radius {
+    border-bottom: thin dashed #bbb;
+    border-left: 2px solid #bbb;
+    border-right: 2px solid #bbb;
+    text-align: center;
+    margin-bottom: .75em;
+    width: 50%;
+    font-size: .85em;
+    color: #666;
+}
+
+.liquid-sim {
+    animation-duration: 4s;
+    animation-name: liquid;
+    -webkit-animation: 4s;
+    -webkit-animation-name: liquid;
+}
+
+@keyframes liquid {
+    from {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+/* Layout */
+
+.no-padding {
+    padding: 0;
+}
+
+@media only screen and (min-width: 62em) {
+    .sidebar {
+        min-height: 100vh;
+    }
+
+    .site-logo {
+        width: 100%;
+    }
+}
