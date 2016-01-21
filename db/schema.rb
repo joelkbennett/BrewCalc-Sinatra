@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120220029) do
+ActiveRecord::Schema.define(version: 20160121001010) do
 
   create_table "brews", force: :cascade do |t|
     t.string  "name"
-    t.decimal "grain", precision: 4, scale: 2
-    t.decimal "hops",  precision: 4, scale: 2
+    t.decimal "grain",    precision: 4, scale: 2
+    t.decimal "hops",     precision: 4, scale: 2
     t.date    "date"
+    t.integer "users_id"
   end
+
+  add_index "brews", ["users_id"], name: "index_brews_on_users_id"
 
   create_table "users", force: :cascade do |t|
     t.string "username"
