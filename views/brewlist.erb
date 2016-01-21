@@ -14,6 +14,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Brewer ID</th>
               <th>Grain Weight</th>
               <th>Hop Weight</th>
               <th>Brew Date</th>
@@ -22,6 +23,7 @@
           <% for @brew in @brews %>
           <tr>
             <td><a href="/brews/<%= @brew.id %>"><%= @brew.name %></a></td>
+            <td><%= @brew.users_id %></td>
             <td><%= @brew.grain %></td>
             <td><%= @brew.hops %></td>
             <td><%= @brew.date %></td>

@@ -1,0 +1,5 @@
+<ul>
+  <% for user in @users %>
+    <li><%= user.username %> <strong>//</strong> <%= user.id %> <strong>//</strong> <%= user.password %> <strong>//</strong> <%= user.salt %> <strong>//</strong> <%= user.email %></li>
+  <% end %>
+</ul>
