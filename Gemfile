@@ -1,5 +1,8 @@
+source "https://rubygems.org"
 gem "sinatra"
 gem "sinatra-activerecord"
 gem "sqlite3"
 gem "bcrypt-ruby"
 gem "rake"
+gem "yard"
+gem "yard-sinatra"
