@@ -1,2 +1,3 @@
 require_relative 'userlogin'
-BrewCalc::App.helpers UserLogin
+require_relative 'pivo'
+BrewCalc::App.helpers UserLogin, Pivo
