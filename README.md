@@ -1,3 +1,5 @@
+<img src='https://joelkbennett.github.io/BrewCalc/app/images/brewcalc-logo.png'>
+
 BrewCalc - Sinatra
 ==================
 
